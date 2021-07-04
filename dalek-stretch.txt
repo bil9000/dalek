@@ -1,0 +1,8 @@
+
+RS="{\"Comment\":\"aim at ambassador \",\"Changes\":[{\"Action\":\"CREATE\",\"ResourceRecordSet\":{\"Name\":\"live.psx-dev.persecexpress.com\",\"Type\":\"A\",\"TTL\":300,\"ResourceRecords\":[{\"Value\":\"4.4.4.4\"}]}}]}"
+aws route53 change-resource-record-sets --hosted-zone-id Z03738743ITFLABN0QJ7H --change-batch "$HZ_LIVENESS_JSON" | jq -r .ChangeInfo.Status)
+
+
+AllowExternalDNSUpdates
+
+aws iam create-role --role-name ExtDNSRole --assume-role-policy-document file://iam_policy_ext_dns.json
